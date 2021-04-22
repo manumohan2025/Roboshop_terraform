@@ -1,12 +1,17 @@
-dev-init:
-	@terraform-init -backend-config=backend/dev.tfvar -no-color
-dev-apply:
-	@terraform-apply -var-file=Env/dev.tfvars -auto-approve -no-color
-dev-destroy:
-	@terraform-destroy -var-file=Env/dev.tfvars -auto-approve -no-color
-prod-init:
-	@terraform-init -backend-config=backend/dev.tfvar -no-color
-prod-apply:
-	@terraform-apply -var-file=Env/dev.tfvars -auto-approve -no-color
-prod-destroy:
-	@terraform-destroy -var-file=Env/dev.tfvars -auto-approve -no-color
+dev-init: ## Terraform init for DEV env
+	@terraform init -backend-config=backend/dev.tfvars -no-color
+
+dev-apply: ## Terraform Apply for DEV env
+	@terraform apply -var-file=env/dev.tfvars -auto-approve -no-color
+
+dev-destroy: ## Terraform Destroy for DEV env
+	@terraform destroy -var-file=env/dev.tfvars -auto-approve -no-color
+
+prod-init: ## Terraform init for PROD env
+	@terraform init -backend-config=backend/prod.tfvars -no-color
+
+prod-apply: ## Terraform Apply for PROD env
+	@terraform apply -var-file=env/prod.tfvars -auto-approve -no-color
+
+prod-destroy: ## Terraform Destroy for PROD env
+	@terraform destroy -var-file=env/prod.tfvars -auto-approve -no-color
